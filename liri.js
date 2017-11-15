@@ -35,7 +35,7 @@ function myTweets() {
     });
 }
 
-function spotifyThisSong() {
+function spotifyThisSong(query) {
     if (process.argv.length - 3 > 0) {
         for (var i=3; i < process.argv.length; i++) {
             queryString += process.argv[i] + " ";
@@ -91,25 +91,31 @@ function doWhatItSays() {
         if (error) {
             return console.log(error);
         }
-        var dataArr = data.split(", ");
-        queryString = dataArr[0];
+        var dataArr = data.split(",");
+        nodeArg = dataArr[0];
+        queryString = dataArr[1];
+        console.log(nodeArg);
+        console.log(queryString);
+    
     }); 
-    console.log(queryString);
+
 }
 
-switch(nodeArg) {
-    case "my-tweets":
-        myTweets();
-        break;
-    case "spotify-this-song":
-        spotifyThisSong();
-        break;
-    case "movie-this":
-        movieThis();
-        break;
-    case "do-what-it-says":
-        doWhatItSays();
-        break;
-    default:
-        console.log("Please select valid command");
+function action() {
+    switch(nodeArg) {
+        case "my-tweets":
+            myTweets();
+            break;
+        case "spotify-this-song":
+            spotifyThisSong();
+            break;
+        case "movie-this":
+            movieThis();
+            break;
+        case "do-what-it-says":
+            doWhatItSays(queryString);
+            break;
+        default:
+            console.log("Please select valid command");
+    }
 }
