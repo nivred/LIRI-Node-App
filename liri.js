@@ -96,7 +96,7 @@ function doWhatItSays() {
         queryString = dataArr[1];
         console.log(nodeArg);
         console.log(queryString);
-    
+        action();
     }); 
 
 }
