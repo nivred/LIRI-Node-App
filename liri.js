@@ -112,15 +112,18 @@ function doWhatItSays() {
         }
         // change argument length to pass new data
         argLen = 1
+        // strings with commas need to be seperated
         var dataArr = data.split(",");
+        // assign seperated strings to variables
         nodeArg = dataArr[0];
         queryString = dataArr[1];
-        console.log(nodeArg);
-        console.log(queryString);
+
+        // call spotify function
         spotifyThisSong(queryString);
     }); 
 }
 
+// set up conditionals to handle node commands and execute proper function
 switch(nodeArg) {
     case "my-tweets":
         myTweets();
